@@ -1,0 +1,11 @@
+body {
+    direction: rtl;
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.active {
+    border-radius: 5px;
+    border: 1px solid #0d6efd;
+}

@@ -1,0 +1,21 @@
+composer create-project laravel/laravel laravel8
+php artisan serve --port=3000
+php artisan make:migration create_posts_table --create=posts    =>  create table
+php artisan make:migration create_posts_table --table=posts     =>  update table
+php artisan migrate    => run migrations
+php artisan make:controller postController
+php artisan make:model post    => make model with  single of controller name
+composer dump-autoload  =>  re run composer autoload
+php artisan route:list
+php artisan make:model blog -mc   => make model with migration and controller
+php artisan make:model blog -mr   => make model with migration and controller with all routes function 
+ 
+ 
+ 
+ 
+ 
+ 
+-----------------------------------
+snake_case
+PascalCase
+camelCase
