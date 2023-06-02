@@ -19,7 +19,7 @@
   <td>{{$key +1}}</td>
   <td>{{$post->title}}</td>
   <td>{{shortText($post->content)}}</td>
-  <td>{{$post->image}}</td>
+  <td><img src="{{asset($post->image)}}" alt="" style="width: 80px;height:50px;"></td>
   <td>
     <form action="{{route('posts.destroy' , $post->id)}}" method="post" style="display:inline-block;">
       <input type="hidden" value="delete" name="_method">

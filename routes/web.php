@@ -22,6 +22,4 @@ Route::get('/', 'indexController@index')->name('index');
 // Route::put('/posts/{post}', 'postController@update')->name('posts.update');
 // Route::delete('/posts/{post}', 'postController@destroy')->name('posts.destroy');
 
-Route::resource('posts', 'postController');
-// Route::resource('posts', 'postController')->except(['index' , 'show']);  => all route without inde and show
-// Route::resource('posts', 'postController')->except(['index' , 'show']);   => just inde and show
+Route::resource('posts', 'postController'); // Route::resource('posts', 'postController')->except(['index' , 'show']);  => all route without inde and show // Route::resource('posts', 'postController')->only(['index' , 'show']);   => just inde and show

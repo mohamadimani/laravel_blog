@@ -9,8 +9,8 @@ composer dump-autoload  =>  re run composer autoload
 php artisan route:list
 php artisan make:model blog -mc   => make model with migration and controller
 php artisan make:model blog -mr   => make model with migration and controller with all routes function 
- 
- 
+
+ php artisan storage:link  => make storage shortcut in public
  
  
  

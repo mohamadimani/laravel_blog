@@ -39,7 +39,7 @@ return [
     "digits_between" => ":attribute باید بین :min و :max رقم باشد.",
     "email" => "فرمت :attribute معتبر نیست.",
     "exists" => ":attribute انتخاب شده، معتبر نیست.",
-    "image" => ":attribute باید تصویر باشد.",
+    "image" => ":attribute باید عکس باشد.",
     "in" => ":attribute انتخاب شده، معتبر نیست.",
     "integer" => ":attribute باید نوع داده ای عددی (integer) باشد.",
     "ip" => ":attribute باید IP آدرس معتبر باشد.",
@@ -98,6 +98,7 @@ return [
     'attributes' => array(
         'title' => 'عنوان',
         'content' => 'محتوا',
+        'image' => 'تصویر',
     ),
 
 

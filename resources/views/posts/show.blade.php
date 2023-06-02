@@ -9,8 +9,11 @@
  
   <h3>{{$post->title}}</h3>
   <hr>
-  <img src="{{$post->image}}">
+  <img style="width: 480px;height:400px;" src="{{ asset($post->image) }}">
   <br>
   <p>{{$post->content}}</p>
- 
+ <br>
+ <hr style="margin-bottom: 1px ">
+ <span>{{dateToJalali($post->created_at)}}</span>
+ <hr style="margin-top: 1px ">
 @endsection

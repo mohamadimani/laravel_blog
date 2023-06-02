@@ -30,7 +30,8 @@ class postController extends Controller
 
         Post::create([
             'title' => $request->title,
-            'content' => $request->content
+            'content' => $request->content,
+            'image' => $validateData['filePath']
         ]);
         return redirect()->route('posts.index')->withMessage('ذخیره شد');
     }
@@ -38,16 +39,23 @@ class postController extends Controller
     public function update(Post $post, Request $request)
     {
         $validateData = $this->validationData();
+        $imageName =  $post->image;
+        if (isset($request->image) and $request->image != null) {
+            $imageName = $validateData['filePath'];
+            deleteImage($post->image);
+        }
 
         $post->update([
             'title' => $request->title,
-            'content' => $request->content
+            'content' => $request->content,
+            'image' => $imageName
         ]);
         return redirect()->route('posts.index')->withMessage('ویرایش شد');
     }
 
     public function destroy(Post $post)
     {
+        deleteImage($post->image);
         $post->delete();
         return redirect()->route('posts.index')->withMessage('حذف شد');
     }
@@ -59,9 +67,17 @@ class postController extends Controller
 
     public function validationData()
     {
-        return $validateData = $this->validate(request(), [
+        $validateData = $this->validate(request(), [
             'title' => 'required|string|min:3|max:100',
             'content' => 'required|string|between:5,5000',
+            'image' => 'nullable|image|max:2048',
         ]);
+
+        $validateData['filePath'] = null;
+        if (isset(request()->image)) {
+            $fileUrl = upload(request()->image);
+            $validateData['filePath'] = $fileUrl;
+        }
+        return $validateData;
     }
 }
