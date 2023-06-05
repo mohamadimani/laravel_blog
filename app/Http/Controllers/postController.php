@@ -9,13 +9,26 @@ class postController extends Controller
 {
     public function index(Request $request)
     {
-        // $posts = Post::all();
         $posts = Post::query();
+
         if ($q = $request->q and !empty($q)) {
             $posts =  $posts->where('title', 'LIKE', "%$q%");
             $posts =  $posts->orWhere('content', 'LIKE', "%$q%");
         }
-        $posts = $posts->get();
+
+        if ($sort = $request->sort and !empty($sort)) {
+            if (in_array($sort, ['title', 'content'])) {
+                $posts =  $posts->orderBy($sort);
+            }
+            if ($sort == 'oldest') {
+                $posts =  $posts->orderBy('id' , 'ASC');
+            }
+            if ($sort == 'newest') {
+                $posts =  $posts->latest();
+            }
+        }
+
+        $posts = $posts->paginate(10);
 
         return view('posts.index', ['posts' => $posts]);
     }
