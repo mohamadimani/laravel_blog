@@ -50,8 +50,8 @@
                 <a class="nav-link @if(currentRoute() =='posts.create') active @endif" href="{{ route('posts.create') }}">ایجاد پست</a>
               </li>
             </ul>
-            <form class="d-flex float-start" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex float-start" role="search" action="" method="get">
+              <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" value="{{ request()->q }}">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>

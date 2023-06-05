@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class postController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::query();
+        if ($q = $request->q and !empty($q)) {
+            $posts =  $posts->where('title', 'LIKE', "%$q%");
+            $posts =  $posts->orWhere('content', 'LIKE', "%$q%");
+        }
+        $posts = $posts->get();
 
         return view('posts.index', ['posts' => $posts]);
     }

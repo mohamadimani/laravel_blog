@@ -14,6 +14,6 @@
   <p>{{$post->content}}</p>
  <br>
  <hr style="margin-bottom: 1px ">
- <span>{{dateToJalali($post->created_at)}}</span>
+ <span>{{dateToJalali($post->created_at)->format('Y/m/d H:i:s') }}</span>
  <hr style="margin-top: 1px ">
 @endsection
